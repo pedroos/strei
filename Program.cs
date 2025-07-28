@@ -41,8 +41,7 @@ class Program {
 record InitVlcResult(
     string Directory, 
     LibVLC? Lib, 
-    MediaPlayer? 
-    Player, 
+    MediaPlayer? Player, 
     FileVersionInfo? Version, 
     ContextMenuStrip Menu,
     ToolStripMenuItem? PauseResumeMenuItem
@@ -58,7 +57,7 @@ class AppContext : ApplicationContext {
     readonly FolderBrowserDialog initialDirBrowser;
     string? currentFile = null;
     
-    public TextWriter? Dbg { get; set; }
+    TextWriter? Dbg { get; init; }
 
     public AppContext(TextWriter? dbg = null) {
         Dbg = dbg;
@@ -162,8 +161,6 @@ class AppContext : ApplicationContext {
         }
         
         return Try<InitVlcResult, Exception>(() => {
-            // Read VLC path from configuration
-            
             if (!Directory.Exists(vlcDir)) {
                 Dbg?.WriteLine("    Directory doesn't exist");
                 

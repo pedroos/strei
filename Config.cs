@@ -16,7 +16,7 @@ public class ConfigException : Exception {
 
 public class Config {
     public string Path { get; }
-    public TextWriter? Dbg { get; set; }
+    public TextWriter? Dbg { get; init; }
     
     public Config(string path) {
         Path = path;
@@ -136,10 +136,9 @@ public class Config {
                 "Configuration was not read");
             else 
                 // Create the dictionary
-                config = new Dictionary<
-                    string, 
-                    ImmutableDictionary<string, string>
-                >().ToImmutableDictionary();
+                config = ImmutableDictionary<
+                    string, ImmutableDictionary<string, string>
+                >.Empty;
         }
         if (!config.ContainsKey(section)) {
             if (!fileCreation) throw new ConfigException(
@@ -196,7 +195,10 @@ public class Config {
                 Dbg?.WriteLine($"    Remove `{configBakPth}`");
                 File.Delete(configBakPth);
             }
-            Dbg?.WriteLine($"    Move `Path` to `{configBakPth}`");
+            Dbg?.WriteLine($"""
+                    Move `{Path}` 
+                        to `{configBakPth}`
+                """);
             File.Move(Path, configBakPth);
         }
         

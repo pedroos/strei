@@ -2,11 +2,11 @@
 
 ![logo](logo.png)
 
-strei is a trey audio player designed specifically for continuous, background ambient sounds with automatic loop. It uses LibVLCSharp.
+strei is a tray audio player designed specifically for continuous, background ambient sounds with automatic loop. It uses LibVLCSharp.
 
 With strei, no longer opening up foreground sounds and movies interrupt background ones.
 
-Upon startup, strei sits in your trey ready to load a sound file. An initial media directory can be specified. Playback can be paused and resumed.
+Upon startup, strei sits in your tray ready to load a sound file. An initial media directory can be specified. Playback can be paused and resumed.
 
 strei uses about 11 MB by itself, plus a fraction of the size of the media file it is currently playing for its buffer. Memory is recovered after each new sound is loaded.
 
@@ -28,7 +28,7 @@ strei is portable and doesn't require installation.
 
 Copy your files from a release to a directory and run `strei.exe`.
 
-Then, using the trey icon, select your VLC installation directory, and, if desired, a media directory.
+Then, using the tray icon, select your VLC installation directory, and, if desired, a media directory.
 
 Then, you're ready to load a sound.
 
